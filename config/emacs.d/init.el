@@ -9,6 +9,11 @@
 
 
 (setq inhibit-splash-screen t)
+(when window-system
+  (tool-bar-mode -1)
+  (set-default-font "-apple-Monaco-medium-normal-normal-*-14-*-*-*-m-0-iso10646-1")
+)
+
 (setq ns-pop-up-frames nil)
 (setq mac-function-modifier  'meta)
 (when window-system (scroll-bar-mode -1))
@@ -102,3 +107,32 @@
 
 
 (global-set-key [(control x) ? ] 'ido-switch-buffer)
+(toggle-frame-maximized)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ (when window-system '(custom-enabled-themes (quote (classic))))
+ '(custom-safe-themes
+   (quote
+	("b8c5adfc0230bd8e8d73450c2cd4044ad7ba1d24458e37b6dec65607fc392980" "8016855a07f289a6b2deb248e192633dca0165f07ee5d51f9ba982ec2c36797d" default)))
+ '(ess-tab-complete-in-script t)
+ '(gofmt-command "/Users/ryszard/Projects/GOPATH/bin/goimports")
+ '(js-indent-level 2)
+ '(python-indent-offset 4)
+ '(safe-local-variable-values
+   (quote
+	((outline-minor-mode)
+	 (whitespace-style face tabs spaces trailing lines space-before-tab::space newline indentation::space empty space-after-tab::space space-mark tab-mark newline-mark)
+	 (Syntax . ANSI-Common-Lisp))))
+ '(tab-width 4))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
