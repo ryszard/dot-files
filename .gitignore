@@ -11,7 +11,7 @@
 auto-save-list
 tramp
 .\#*
-
+*.savehist
 # Org-mode
 .org-id-locations
 *_archive
@@ -50,4 +50,5 @@ flycheck_*.el
 *.elc
 
 # Packaging
-.cask
+.caskconfig/emacs.d/.saveplace
+config/emacs.d/ido.last

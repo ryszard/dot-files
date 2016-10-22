@@ -3,5 +3,5 @@ set -ex
 target=${target:-$HOME}
 cd config
 for file in *; do
-  cp -R $file $target/.$file
+  ln -sf "$(pwd)/$file" $target/.$file
 done
