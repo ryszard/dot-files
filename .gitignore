@@ -50,5 +50,6 @@ flycheck_*.el
 *.elc
 
 # Packaging
-.caskconfig/emacs.d/.saveplace
+.cask
+config/emacs.d/.saveplace
 config/emacs.d/ido.last
