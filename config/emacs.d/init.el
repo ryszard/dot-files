@@ -105,7 +105,7 @@
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
-
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 (global-set-key [(control x) ? ] 'ido-switch-buffer)
 (toggle-frame-maximized)
 (custom-set-variables
@@ -135,4 +135,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
