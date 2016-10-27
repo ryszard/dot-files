@@ -48,7 +48,6 @@
 
 (which-func-mode)
 
-(iswitchb-mode)
 (ido-mode)
 (show-paren-mode 1)
 (setq ido-enable-flex-matching t)
@@ -85,7 +84,7 @@
 (defun split-window-vertically* ()
   "Vertically split window and move to the new buffer."
   (interactive)
-  (let ((new-buffer (iswitchb-read-buffer "vsplit ")))
+  (let ((new-buffer (ido-read-buffer "vsplit ")))
     (split-window-vertically)
     (other-window 1)
     (switch-to-buffer new-buffer)))
@@ -94,7 +93,7 @@
 (defun split-window-horizontally* ()
   "Horizontaly split window and move to the new buffer."
   (interactive)
-  (let ((new-buffer (iswitchb-read-buffer "hsplit ")))
+  (let ((new-buffer (ido-read-buffer "hsplit ")))
     (split-window-horizontally)
     (other-window 1)
     (switch-to-buffer new-buffer)))
@@ -115,14 +114,14 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- (when window-system '(custom-enabled-themes (quote (classic))))
+ '(custom-enabled-themes (quote (classic)))
  '(custom-safe-themes
    (quote
 	("b8c5adfc0230bd8e8d73450c2cd4044ad7ba1d24458e37b6dec65607fc392980" "8016855a07f289a6b2deb248e192633dca0165f07ee5d51f9ba982ec2c36797d" default)))
  '(ess-tab-complete-in-script t)
  '(gofmt-command "/Users/ryszard/Projects/GOPATH/bin/goimports")
  '(js-indent-level 2)
- '(python-indent-offset 4)
+ '(python-indent-offset 2)
  '(safe-local-variable-values
    (quote
 	((outline-minor-mode)
