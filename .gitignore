@@ -53,3 +53,4 @@ flycheck_*.el
 .cask
 config/emacs.d/.saveplace
 config/emacs.d/ido.last
+config/emacs.d/eshell/history
