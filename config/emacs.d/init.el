@@ -77,6 +77,7 @@
 (global-set-key (kbd "M-~") 'previous-multiframe-window)
 
 (setq-default display-buffer-reuse-frames t)
+(setenv "PATH" (concat "/usr/local/bin:" (getenv "PATH")))
 (dolist (el '("/usr/local/bin"))
   (push el exec-path))
 
@@ -103,6 +104,8 @@
 
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+(require 'git)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (global-set-key [(control x) ? ] 'ido-switch-buffer)
