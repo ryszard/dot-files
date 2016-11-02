@@ -80,6 +80,9 @@
 (dolist (el '("/usr/local/bin"))
   (push el exec-path))
 
+(when (file-exists-p "~/.emacs.local")
+  (load-file "~/.emacs.local"))
+
 
 (defun split-window-vertically* ()
   "Vertically split window and move to the new buffer."
@@ -133,6 +136,11 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (global-set-key [(control x) ? ] 'ido-switch-buffer)
+
+(let ((gi (shell-command-to-string "which goimports")))
+  (when (> (length gi) 0)
+	(setq gofmt-command (substring gi 0 -1))))
+
 (toggle-frame-maximized)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -145,7 +153,6 @@
    (quote
 	("b8c5adfc0230bd8e8d73450c2cd4044ad7ba1d24458e37b6dec65607fc392980" "8016855a07f289a6b2deb248e192633dca0165f07ee5d51f9ba982ec2c36797d" default)))
  '(ess-tab-complete-in-script t)
- '(gofmt-command "/Users/ryszard/Projects/GOPATH/bin/goimports")
  '(jedi:get-in-function-call-delay 500)
  '(jedi:tooltip-method nil)
  '(js-indent-level 2)
