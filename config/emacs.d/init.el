@@ -11,11 +11,10 @@
 (setq inhibit-splash-screen t)
 (when window-system
   (tool-bar-mode -1)
-  (set-default-font "-apple-Monaco-medium-normal-normal-*-14-*-*-*-m-0-iso10646-1")
-)
+  (set-default-font "-apple-Monaco-medium-normal-normal-*-14-*-*-*-m-0-iso10646-1"))
 
 (setq ns-pop-up-frames nil)
-(setq mac-function-modifier  'meta)
+;(setq mac-function-modifier  'meta)
 (when window-system (scroll-bar-mode -1))
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-auto-revert-mode t)
@@ -108,13 +107,29 @@
 (require 'git)
 
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
+(defun add-hooks (mode &rest hooks)
+  (dolist (hook hooks)
+	(add-hook hook mode)))
+
+(add-hooks #'enable-paredit-mode
+		   'emacs-lisp-mode-hook
+		   'eval-expression-minibuffer-setup-hook
+		   'ielm-mode-hook
+		   'lisp-mode-hook
+		   'lisp-interaction-mode-hook
+		   'scheme-mode-hook)
+
+(add-hooks #'highlight-parentheses-mode
+		   'python-mode-hook
+		   'lisp-mode-hook
+		   'lisp-interaction-mode-hook
+		   'emacs-lisp-mode-hook)
+
+
+(when window-system
+  (load-theme 'classic t t)
+  (enable-theme 'classic))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (global-set-key [(control x) ? ] 'ido-switch-buffer)
@@ -126,13 +141,17 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-enabled-themes (quote (classic)))
  '(custom-safe-themes
    (quote
 	("b8c5adfc0230bd8e8d73450c2cd4044ad7ba1d24458e37b6dec65607fc392980" "8016855a07f289a6b2deb248e192633dca0165f07ee5d51f9ba982ec2c36797d" default)))
  '(ess-tab-complete-in-script t)
  '(gofmt-command "/Users/ryszard/Projects/GOPATH/bin/goimports")
+ '(jedi:get-in-function-call-delay 500)
+ '(jedi:tooltip-method nil)
  '(js-indent-level 2)
+ '(package-selected-packages
+   (quote
+	(yaml-mode undo-tree paredit jedi highlight-parentheses go-mode dockerfile-mode ag)))
  '(python-indent-offset 2)
  '(safe-local-variable-values
    (quote
